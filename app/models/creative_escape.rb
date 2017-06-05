@@ -1,0 +1,2 @@
+class CreativeEscape < ApplicationRecord
+end
