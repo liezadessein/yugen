@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170605140530) do
+ActiveRecord::Schema.define(version: 20170606081448) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -22,7 +22,7 @@ ActiveRecord::Schema.define(version: 20170605140530) do
     t.string   "currency"
     t.integer  "streetnumber"
     t.string   "address"
-    t.integer  "postcode"
+    t.string   "postcode"
     t.string   "city"
     t.string   "email"
     t.integer  "phone"
@@ -30,6 +30,7 @@ ActiveRecord::Schema.define(version: 20170605140530) do
     t.string   "country"
     t.datetime "created_at",   null: false
     t.datetime "updated_at",   null: false
+    t.string   "length"
   end
 
   create_table "escape_photos", force: :cascade do |t|

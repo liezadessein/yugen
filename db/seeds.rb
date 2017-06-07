@@ -18,7 +18,10 @@ CreativeEscape.create(length: "8 days",skill: "beer brewing", description: "Micr
 In addition, the participants will conduct and accompany a complete malting batch in our pilot malting.
 The language is English. You can expect an intensive training with maximum benefit.", price: 1990, currency: "euros", streetnumber: 13, address: "Seestrasse", postcode: 13533, city: "Berlin", email: "beer@vlbberlin.org", phone: 0223526352 , bookable: true, country: "Germany" )
 
-CreativeEscape.create(length: "2 days", skill: "silk screen printing", description: "Print Club London: Join one of our amazing designers who will guide you through all aspects of screen print design and teach you how to create a professional, 2 colour edition.
+c = CreativeEscape.create(length: "2 days", skill: "silk screen printing", description: "Print Club London: Join one of our amazing designers who will guide you through all aspects of screen print design and teach you how to create a professional, 2 colour edition.
 Over the course of 2 days you will be taught all the tricks and skills you need to start screen printing independently at a high level. Day 1 kicks off in the Print Club Gallery (next door to the Print Club studio) in Dalston. You will be taught the building blocks of artwork creation through the use of examples, learning step by step how all the different effects are achieved.
 With the small class size, there will be lots of time for the tutor to discuss with you the best way to achieve an amazing print from the starting point of your design. Once all the artwork has been created and prepared for print, you will be taught how to coat, expose and wash out your screens ready for day 2!
 Day 2 is all about the printing… In the morning you will be shown different types of ink, how to mix up your inks and print your first layer. In the afternoon everyone  will print their second layers. After all the printing is done, and you’ve had a chance to admire your newly taught printing prowess, you will be shown how to blast out your screen!", price: 160, currency: "pounds", streetnumber: 10, address: "Print Club London Millers Avenue", postcode:"D82DS", city: "London", email: "london@gmail.com", phone: 0212412541 , bookable: true, country: "United Kingdom")
+
+
+#EscapePhoto.create(creative_escape: c, )

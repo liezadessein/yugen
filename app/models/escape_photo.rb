@@ -1,3 +1,3 @@
 class EscapePhoto < ApplicationRecord
-  belongs_to :CreativeEscape
+  belongs_to :creative_escape
 end
