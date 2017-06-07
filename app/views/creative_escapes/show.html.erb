@@ -1,1 +1,32 @@
-<h2>one creative escape</h2>
+<div class="container">
+  <h1><%=  @creative_escape[:skill] %> in <%= @creative_escape[:city] %></h1>
+  <%=cl_image_tag("test", width: 1150, height: 300, crop: :fill) %>
+</div>
+
+<div class="container">
+  <div class="row">
+    <div class="col-sm-4" class="text-justify">
+    <div class = "well">
+      <h2> info </h2>
+      <p><%= @creative_escape[:price] %>/<%= @creative_escape[:currency] %></p>
+      <%= @creative_escape[:length] %>
+      <%= @creative_escape[:streetnumber] %>
+      <%= @creative_escape[:address] %>
+      <%= @creative_escape[:postcode] %>
+      <%= @creative_escape[:city] %>
+      <%= @creative_escape[:country] %>
+      <%= @creative_escape[:email] %>
+      <%= @creative_escape[:phone] %>
+      </div>
+    </div>
+
+
+    <div class="col-sm-8" >
+        <div class="text-justify" style="min-height: 550px">
+          <h2> description</h2>
+          <%= @creative_escape[:description] %>
+        </div>
+        <p> google maps</p>
+    </div>
+  </div>
+</div>

@@ -7,7 +7,7 @@ class CreateCreativeEscapes < ActiveRecord::Migration[5.0]
       t.string :currency
       t.integer :streetnumber
       t.string :address
-      t.integer :postcode
+      t.string :postcode
       t.string :city
       t.string :email
       t.integer :phone
