@@ -1,15 +1,22 @@
 class CreativeEscapesController < ApplicationController
- # has_many :escape_photos
+  def index
+    @creative_escapes = CreativeEscape.all
+  end
 
-def index
- @creative_escapes = CreativeEscape.all
-end
+  def show
+    @creative_escape = CreativeEscape.find(params[:id])
+  end
 
-def show
-  @creative_escape = CreativeEscape.find(params[:id])
-end
+  def new
+    @creative_escape = CreativeEscape.new
+  end
 
-private
+  def create
+  end
 
+  private
 
+  def creative_escape_params
+    params.require(:creative_escape).permit()
+  end
 end

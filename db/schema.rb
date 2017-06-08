@@ -35,10 +35,10 @@ ActiveRecord::Schema.define(version: 20170606111417) do
 
   create_table "escape_photos", force: :cascade do |t|
     t.string   "photo"
-    t.integer  "creative_escapes_id"
-    t.datetime "created_at",          null: false
-    t.datetime "updated_at",          null: false
-    t.index ["creative_escapes_id"], name: "index_escape_photos_on_creative_escapes_id", using: :btree
+    t.integer  "creative_escape_id"
+    t.datetime "created_at",         null: false
+    t.datetime "updated_at",         null: false
+    t.index ["creative_escape_id"], name: "index_escape_photos_on_creative_escape_id", using: :btree
   end
 
   create_table "users", force: :cascade do |t|
@@ -58,5 +58,5 @@ ActiveRecord::Schema.define(version: 20170606111417) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   end
 
-  add_foreign_key "escape_photos", "creative_escapes", column: "creative_escapes_id"
+  add_foreign_key "escape_photos", "creative_escapes"
 end
