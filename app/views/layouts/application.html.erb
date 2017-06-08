@@ -8,11 +8,19 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <%= stylesheet_link_tag    'application', media: 'all' %>
   </head>
+
   <body>
-    <%= render 'shared/navbar' %>
-    <%= render 'shared/flashes' %>
-    <%= yield %>
-    <%= javascript_include_tag 'application' %>
-    <%= render 'shared/footer' %>
+      <%#= cl_image_tag("test", width: 1300, height: 150, crop: :fill) %>
+     <%= render 'shared/navbar' %>
+     <%= render 'shared/flashes' %>
+     <%= yield %>
+     <%= render 'shared/footer' %>
+     <%= javascript_include_tag 'application' %>
+  <!-- #content -->
+    <!-- #footer -->
   </body>
 </html>
+
+
+
+

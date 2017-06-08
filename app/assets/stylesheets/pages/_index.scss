@@ -18,6 +18,8 @@
   left: 10px;
   font-size: 10px;
   text-transform: uppercase;
+  border-top: 15px;
+  border-bottom: 15px;
 }
 .card-description {
   position: absolute;
@@ -39,7 +41,12 @@
   z-index:2;
   background: black;
   opacity: 0;
+
 }
 .card-link:hover{
   opacity: 0.1;
+}
+h1{
+ // padding-left: 50px;
+  color: #A1A1A1;
 }
