@@ -1,3 +1,23 @@
-<%= simple_form_for @creative_escape do |f| %>
-  <%= f.input :description %>
-<% end %>
+<div class="container">
+ <div class="row" >
+    <div class="col-xs-8 col-sm-8">
+     <div class = "well">
+        <%= simple_form_for @creative_escape do |f| %>
+          <%= f.input :description %>
+          <%= f.input :length %>
+          <%= f.input :price %>
+          <%= f.input :currency %>
+          <%= f.input :streetnumber %>
+          <%= f.input :address %>
+          <%= f.input :postcode %>
+          <%= f.input :city %>
+          <%#= f.input :country %>
+          <%= f.input :email %>
+          <%= f.input :phone %>
+          <%= f.input :escape_photos, as: :file, input_html: { multiple: true } %>
+          <%= f.submit %>
+          <% end %>
+      </div>
+    </div>
+ </div>
+</div>

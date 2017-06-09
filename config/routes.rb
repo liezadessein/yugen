@@ -3,7 +3,5 @@ Rails.application.routes.draw do
 
   root to: 'pages#home'
 
-  resources :creative_escapes, only: [:index, :show, :new, :create] do
-    resources :escape_photos, only: :create
-  end
+  resources :creative_escapes, only: [:index, :show, :new, :create]
 end

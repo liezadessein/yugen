@@ -1,21 +1,21 @@
 <div class="container">
 
   <h1><%=  @creative_escape[:skill] %> in <%= @creative_escape[:city] %></h1>
-  <%=cl_image_tag("test", id:"header-show") %>
+  <%= cl_image_tag @creative_escape.escape_photos.first.photo,  id:"header-show" %>
 
   <div class="row">
     <div class="col-sm-4" class="text-justify">
     <div class = "well">
       <h2> info </h2>
       <p><%= @creative_escape[:price] %>/<%= @creative_escape[:currency] %></p>
-      <%= @creative_escape[:length] %>
-      <%= @creative_escape[:streetnumber] %>
-      <%= @creative_escape[:address] %>
-      <%= @creative_escape[:postcode] %>
-      <%= @creative_escape[:city] %>
-      <%= @creative_escape[:country] %>
-      <%= @creative_escape[:email] %>
-      <%= @creative_escape[:phone] %>
+        <%= @creative_escape[:length] %>
+        <%= @creative_escape[:streetnumber] %>
+        <%= @creative_escape[:address] %>
+        <%= @creative_escape[:postcode] %>
+        <%= @creative_escape[:city] %>
+        <%= @creative_escape[:country] %>
+        <%= @creative_escape[:email] %>
+        <%= @creative_escape[:phone] %>
       </div>
     </div>
 
@@ -27,5 +27,13 @@
         </div>
         <p> google maps</p>
     </div>
+  </div>
+
+  <div class="row" >
+    <% @creative_escape.escape_photos.each do |escape_photo| %>
+      <div class=" col-sm-3">
+        <%= cl_image_tag escape_photo.photo, height: 300, width: 220, crop: :fill %>
+      </div>
+    <% end %>
   </div>
 </div>
