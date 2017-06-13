@@ -10,15 +10,26 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170611121836) do
+ActiveRecord::Schema.define(version: 20170613133404) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
+  create_table "bookings", force: :cascade do |t|
+    t.integer  "creative_escape_id"
+    t.string   "periodes_id"
+    t.integer  "user_id"
+    t.datetime "created_at",                     null: false
+    t.datetime "updated_at",                     null: false
+    t.json     "payment"
+    t.string   "sku"
+    t.integer  "amount_cents",       default: 0, null: false
+    t.string   "state"
+  end
+
   create_table "creative_escapes", force: :cascade do |t|
     t.string   "skill"
     t.text     "description"
-    t.integer  "price"
     t.string   "currency"
     t.integer  "streetnumber"
     t.string   "address"
@@ -28,11 +39,13 @@ ActiveRecord::Schema.define(version: 20170611121836) do
     t.integer  "phone"
     t.boolean  "bookable"
     t.string   "country"
-    t.datetime "created_at",   null: false
-    t.datetime "updated_at",   null: false
+    t.datetime "created_at",               null: false
+    t.datetime "updated_at",               null: false
     t.string   "length"
     t.string   "longitude"
     t.string   "latitude"
+    t.string   "sku"
+    t.integer  "price_cents",  default: 0, null: false
   end
 
   create_table "escape_photos", force: :cascade do |t|

@@ -20,6 +20,8 @@ gem 'cloudinary'
 gem 'carrierwave', '~> 0.11.2'
 gem 'country_select'
 gem 'geocoder'
+gem 'money-rails'
+gem 'stripe'
 
 gem "coffee-rails"
 gem "gmaps4rails"

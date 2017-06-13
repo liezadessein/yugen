@@ -1,66 +1,93 @@
 <div class="container">
 
-  <h1><%=  @creative_escape[:skill] %> in <%= @creative_escape[:city] %></h1>
-  <%= cl_image_tag @creative_escape.escape_photos.first.photo,  id:"header-show" %>
+  <h1><%= @creative_escape[:skill] %> in <%= @creative_escape[:city] %></h1>
+
+  <div class="row" >
+    <div class="col-sm-12" >
+    <div class="header-show" style="background-image: url('<%= cl_image_path @creative_escape.escape_photos.first.photo %>');">
+
+    </div>
+    </div>
+  </div>
+
 
   <div class="row">
     <div class="col-sm-4" class="text-justify">
     <div class = "well">
-      <h2> info </h2>
-      <li>
-      <p><%= @creative_escape[:price] %>/<%= @creative_escape[:currency] %></p>
-        <%= @creative_escape[:length] %>
-        <%= @creative_escape[:streetnumber] %>
-        <%= @creative_escape[:address] %>
-        <%= @creative_escape[:postcode] %>
-        <%= @creative_escape[:city] %>
-        <%= @creative_escape[:country] %>
-        <%= @creative_escape[:email] %>
-        <%= @creative_escape[:phone] %>
-      </li>
-        <%= link_to "BOOK", class: "btn btn-primary" %>
+          <h2> info </h2>
+Amount: <%= humanized_money_with_symbol(@creative_escape.price_cents) %>
+            <p>price range: <%= @creative_escape[:price_cents] %> <%= @creative_escape[:currency] %>
+            duration: <%= @creative_escape[:length] %></p>
+            <p>contact:
+            </p>
+            <p><%= @creative_escape[:streetnumber] %> <%= @creative_escape[:address] %>
+            <%= @creative_escape[:postcode] %> <%= @creative_escape[:city] %> <%= @creative_escape[:country] %>
+            <%= @creative_escape[:email]%>
+            <%= @creative_escape[:phone] %></p>
+            <%= form_tag bookings_path do %>
+            <%= hidden_field_tag 'creative_escape_id', @creative_escape.id %>
+              <div class="pull-right">
+              <%= submit_tag 'Purchase', class: 'btn btn-primary'%>
+              </div>
+            <% end %>
+            <p></p>
+            <p></p>
+
+
+          <div id="map" style="width: 235px; height: 300px;"></div>
+
+      <% content_for(:after_js) do %>
+        <%= javascript_tag do %>
+          $(document).ready(function() {
+            var handler = Gmaps.build('Google');
+            handler.buildMap({ internal: { id: 'map' } }, function() {
+              markers = handler.addMarkers(<%= raw @hash.to_json %>);
+              handler.bounds.extendWith(markers);
+              handler.fitMapToBounds();
+              if (markers.length == 0) {
+                handler.getMap().setZoom(2);
+              } else if (markers.length == 1) {
+                handler.getMap().setZoom(14);
+              }
+            });
+          });
+        <% end %>
+      <% end %>
+
+
+
+
       </div>
     </div>
 
     <div class="col-sm-8" >
-        <div class="text-justify" style="min-height: 300px">
+        <div class= "description" style="min-height: 300px">
           <h2> description</h2>
           <%= @creative_escape[:description] %>
+          <p><%= link_to "back to list", creative_escapes_path %></p>
         </div>
     </div>
   </div>
 
+  <div class="row">
+      <% @creative_escape.escape_photos.each do |escape_photo| %>
+        <div class=" col-sm-3">
+          <%= cl_image_tag escape_photo.photo, height: 300, width: 220, crop: :fill, class:"images" %>
+        </div>
+
+      <% end %>
+
+  </div>
+
   <div class="row" >
-    <% @creative_escape.escape_photos.each do |escape_photo| %>
-      <div class=" col-sm-3">
-        <%= cl_image_tag escape_photo.photo, height: 300, width: 220, crop: :fill %>
-      </div>
-    <% end %>
+  <div class="col-sm-12">
+    <%= link_to "Edit", edit_creative_escape_path(@creative_escape), class: "btn btn-primary" %>
+    </div>
+  </div>
 
+  <div class="row" >
+  <div class="col-sm-12">
 
-        <%= link_to "back to list", creative_escapes_path %>
-        <%= link_to "Edit", edit_creative_escape_path(@creative_escape), class: "btn btn-primary" %>
-        <p> google maps</p>
-
-        <div id="map" style="width: 100%; height: 600px;"></div>
-
-        <% content_for(:after_js) do %>
-          <%= javascript_tag do %>
-            $(document).ready(function() {
-              var handler = Gmaps.build('Google');
-              handler.buildMap({ internal: { id: 'map' } }, function() {
-                markers = handler.addMarkers(<%= raw @hash.to_json %>);
-                handler.bounds.extendWith(markers);
-                handler.fitMapToBounds();
-                if (markers.length == 0) {
-                  handler.getMap().setZoom(2);
-                } else if (markers.length == 1) {
-                  handler.getMap().setZoom(14);
-                }
-              });
-            });
-          <% end %>
-        <% end %>
-
+  </div>
   </div>
 </div>

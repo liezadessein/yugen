@@ -1,7 +1,8 @@
         <%= simple_form_for @creative_escape do |f| %>
+        <%= f.input :skill %>
         <%= f.input :description %>
         <%= f.input :length %>
-        <%= f.input :price %>
+        <%= f.input :price_cents %>
         <%= f.input :currency %>
         <%= f.input :streetnumber %>
         <%= f.input :address %>
@@ -11,5 +12,6 @@
         <%= f.input :email %>
         <%= f.input :phone %>
         <%= f.input :escape_photos, as: :file, input_html: { multiple: true } %>
+        <%= f.input :sku %>
         <%= f.submit %>
         <% end %>
