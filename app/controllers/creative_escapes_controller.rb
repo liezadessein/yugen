@@ -13,6 +13,10 @@ class CreativeEscapesController < ApplicationController
 
   def show
     @creative_escape = CreativeEscape.find(params[:id])
+    @hash = Gmaps4rails.build_markers([@creative_escape]) do |creative_escape, marker|
+      marker.lat creative_escape.latitude
+      marker.lng creative_escape.longitude
+    end
   end
 
   def new
@@ -45,8 +49,8 @@ class CreativeEscapesController < ApplicationController
   private
 
   def creative_escape_params
-    params.require(:creative_escape).permit(:description, :escape_photos, :length,:price,
-      :currency, :streetnumber, :address, :postcode, :city, :country, :email, :phone )
+    params.require(:creative_escape).permit(:description, :escape_photos, :length,:price_cents,
+      :currency, :streetnumber, :address, :postcode, :city, :country, :email, :phone, :skill)
   end
 
 end

@@ -12,15 +12,13 @@
   <div class="row">
     <% @creative_escapes.each do |creative_escape| %>
       <div class="col-xs-12 col-sm-4">
-         <%= link_to creative_escape_path(creative_escape) do %>
-        <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= cl_image_path creative_escape.escape_photos.first.photo %>')">
-
-         <div class="card-category"><%=creative_escape.country %></div>
-         <div class="card-description">
-           <h2><%= creative_escape.skill%></h2>
-           <p><%= creative_escape.city%></p>
-         </div>
-
+         <%= link_to creative_escape_path(creative_escape), style:"text-decoration: none;" do %>
+       <div class="contour">
+          <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= cl_image_path creative_escape.escape_photos.first.photo %>')">
+             <div class="card-category"><%= creative_escape.city%></div>
+             <div class="card-description"></div>
+          </div>
+             <p><%= creative_escape.skill%></p>
         </div>
         <div style="min-height: 35px"></div>
            <% end %>
