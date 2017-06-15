@@ -1,28 +1,34 @@
 <div class="container" >
-  <h1>creative escapes</h1>
+  <h1>Creative Escapes</h1>
+  <div style="min-height: 550px">
+      <!-- <form action="" class="navbar-wagon-search">
+        <input type="text" class="navbar-wagon-search-input" placeholder="Search something">
+        <button type="submit" class="navbar-wagon-search-btn">
 
-    <form action="" class="navbar-wagon-search">
-      <input type="text" class="navbar-wagon-search-input" placeholder="Search something">
-      <button type="submit" class="navbar-wagon-search-btn">
-      <i class="fa fa-search"></i>
-      </button>
-    </form>
+        </button>
+      </form> -->
+  <%= form_tag creative_escapes_path, method: :get, class:'navbar-wagon-search' do  %>
+  <%= text_field_tag :search%>
+  <%= submit_tag "search", class: "navbar-wagon-search-btn" %>
+   <%end %>
 
-  <div style="min-height: 35px"></div>
-  <div class="row">
-    <% @creative_escapes.each do |creative_escape| %>
-      <div class="col-xs-12 col-sm-4">
-         <%= link_to creative_escape_path(creative_escape), style:"text-decoration: none;" do %>
-       <div class="contour">
-          <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= cl_image_path creative_escape.escape_photos.first.photo %>')">
-             <div class="card-category"><%= creative_escape.city%></div>
-             <div class="card-description"></div>
+
+    <div style="min-height: 35px"></div>
+    <div class="row">
+      <% @creative_escapes.each do |creative_escape| %>
+        <div class="col-xs-12 col-sm-4">
+           <%= link_to creative_escape_path(creative_escape), style:"text-decoration: none;" do %>
+         <div class="contour">
+            <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= cl_image_path creative_escape.escape_photos.first.photo %>')">
+               <div class="card-category"><%= creative_escape.city%></div>
+               <div class="card-description"></div>
+            </div>
+               <p><%= creative_escape.skill%></p>
           </div>
-             <p><%= creative_escape.skill%></p>
+          <div style="min-height: 35px"></div>
+             <% end %>
         </div>
-        <div style="min-height: 35px"></div>
-           <% end %>
-      </div>
-    <% end %>
+      <% end %>
+    </div>
   </div>
 </div>

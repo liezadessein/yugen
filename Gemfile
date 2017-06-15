@@ -22,6 +22,8 @@ gem 'country_select'
 gem 'geocoder'
 gem 'money-rails'
 gem 'stripe'
+gem 'pg_search'
+gem "pundit"
 
 gem "coffee-rails"
 gem "gmaps4rails"

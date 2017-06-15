@@ -15,8 +15,8 @@
     <div class="col-sm-4" class="text-justify">
     <div class = "well">
           <h2> info </h2>
-Amount: <%= humanized_money_with_symbol(@creative_escape.price_cents) %>
-            <p>price range: <%= @creative_escape[:price_cents] %> <%= @creative_escape[:currency] %>
+
+            <p>price range: <%= humanized_money_with_symbol(@creative_escape.price) %>
             duration: <%= @creative_escape[:length] %></p>
             <p>contact:
             </p>
@@ -27,7 +27,7 @@ Amount: <%= humanized_money_with_symbol(@creative_escape.price_cents) %>
             <%= form_tag bookings_path do %>
             <%= hidden_field_tag 'creative_escape_id', @creative_escape.id %>
               <div class="pull-right">
-              <%= submit_tag 'Purchase', class: 'btn btn-primary'%>
+              <%= submit_tag 'Booking', class: 'btn btn-primary'%>
               </div>
             <% end %>
             <p></p>
@@ -54,17 +54,17 @@ Amount: <%= humanized_money_with_symbol(@creative_escape.price_cents) %>
         <% end %>
       <% end %>
 
-
-
-
       </div>
     </div>
 
     <div class="col-sm-8" >
         <div class= "description" style="min-height: 300px">
           <h2> description</h2>
-          <%= @creative_escape[:description] %>
-          <p><%= link_to "back to list", creative_escapes_path %></p>
+            <%= simple_format @creative_escape[:description] %>
+              <div class="pull-right">
+                <p><%=link_to "previous escape |",creative_escape_path(@previous) if @previous %> <%= link_to "back to list", creative_escapes_path %>
+                  <%= link_to "| next escape",creative_escape_path(@next) if @next %></p>
+              </div>
         </div>
     </div>
   </div>

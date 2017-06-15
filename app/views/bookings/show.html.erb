@@ -1,6 +1,16 @@
-<h1>Here is your booking</h1>
-  <ul>
-    <li>Status: <%= @booking.state %></li>
-    <li>Item: <%= @booking.sku %></li>
-    <li>Amount: <%= humanized_money_with_symbol(@booking.amount_cents) %></li>
-  <ul>
+<div class="container">
+    <div class="col-xs-8 col-sm-8">
+      <div class = "well">
+        <h1>Here is your booking</h1>
+          <ul>
+            <li>Status: <%= @booking.state %></li>
+            <li>Item: <%= @booking.sku %></li>
+            <li>Amount: <%= humanized_money_with_symbol(@booking.amount_cents) %></li>
+          <ul>
+
+        <%= render 'form' %>
+        <%= submit_tag 'delete', class: 'btn btn-primary'%>
+    </div>
+ </div>
+</div>
+

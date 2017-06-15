@@ -48,13 +48,13 @@
     <% else %>
 
       <!-- Login text link -->
-      <%= link_to t(".", default: "contact"), new_user_session_path, class: "navbar-wagon-item navbar-wagon-link" %>
-      <%= link_to t(".", default: "blog"), new_user_session_path, class: "navbar-wagon-item navbar-wagon-link" %>
+<!--       <%= link_to t(".", default: "Sign Up"), new_user_registration_path, class: "navbar-wagon-item navbar-wagon-link" %> -->
+      <%= link_to t(".", default: "Sign In"), new_user_session_path, class: "navbar-wagon-item navbar-wagon-link" %>
 
     <% end %>
 
     <!-- Button (call-to-action) -->
-    <button type="button" class="btn btn-default" sign_in>Login</button>
+    <%#= link_to "login", new_user_session_path, class: "btn btn-default" %>
   </div>
 
   <!-- Dropdown list appearing on mobile only -->

@@ -1,9 +1,12 @@
 class CreativeEscapesController < ApplicationController
 
   def index
-   @creative_escapes = CreativeEscape.all
-
-   @creative_escapes_maps = CreativeEscape.where.not(latitude: nil, longitude: nil)
+    if params[:search].nil?
+       @creative_escapes = policy_scope(CreativeEscape)
+    else
+      @creative_escapes = CreativeEscape.search_by_description_and_country(params[:search])
+    end
+    @creative_escapes_maps = CreativeEscape.where.not(latitude: nil, longitude: nil)
 
     @hash = Gmaps4rails.build_markers(@creative_escapes) do |creative_escape, marker|
     marker.lat creative_escape.latitude
@@ -12,10 +15,14 @@ class CreativeEscapesController < ApplicationController
   end
 
   def show
+    skip_authorization
     @creative_escape = CreativeEscape.find(params[:id])
+    @previous = @creative_escape.previous
+    @next = @creative_escape.next
     @hash = Gmaps4rails.build_markers([@creative_escape]) do |creative_escape, marker|
       marker.lat creative_escape.latitude
       marker.lng creative_escape.longitude
+
     end
   end
 
@@ -43,6 +50,11 @@ class CreativeEscapesController < ApplicationController
     else
       render :edit
     end
+  end
+
+  def delete
+
+
   end
 
 

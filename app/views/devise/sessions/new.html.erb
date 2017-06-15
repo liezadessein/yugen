@@ -1,15 +1,29 @@
-<h2>Log in</h2>
+<div class="container">
+  <div style="min-height: 30px"></div>
 
-<%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-  <div class="form-inputs">
-    <%= f.input :email, required: false, autofocus: true %>
-    <%= f.input :password, required: false %>
-    <%= f.input :remember_me, as: :boolean if devise_mapping.rememberable? %>
+  <div class="col-sm-6">
+    <div class="well">
+
+      <div style="min-height: 35px">
+
+      <h2>Welcome to Creative Escape</h2>
+
+        <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+        <div class="form-inputs">
+          <%= f.input :email, required: false, autofocus: true %>
+          <%= f.input :password, required: false %>
+          <%= f.input :remember_me, as: :boolean if devise_mapping.rememberable? %>
+        </div>
+
+        <div class="form-actions"></div>
+          <%= f.button :submit, "Log in" %>
+      </div>
+      <% end %>
+
+      <div style="min-height: 15px"></div>
+      <%= render "devise/shared/links" %>
+      <div style="min-height: 25px"></div>
+
+    </div>
   </div>
-
-  <div class="form-actions">
-    <%= f.button :submit, "Log in" %>
-  </div>
-<% end %>
-
-<%= render "devise/shared/links" %>
+</div>
