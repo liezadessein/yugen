@@ -1,8 +1,9 @@
 class CreativeEscapePolicy < ApplicationPolicy
   class Scope < Scope
     def resolve
-      scope.all
+        scope.all
     end
+end
 
   def update?
     user.admin #== true || user == record.user
@@ -17,4 +18,3 @@ class CreativeEscapePolicy < ApplicationPolicy
 
 
   end
-end

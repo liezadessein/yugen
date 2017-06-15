@@ -27,6 +27,7 @@ class CreativeEscapesController < ApplicationController
   end
 
   def new
+    #user.admin?
     @creative_escape = CreativeEscape.new
   end
 
@@ -40,9 +41,11 @@ class CreativeEscapesController < ApplicationController
 
   def edit
     @creative_escape = CreativeEscape.find(params[:id])
+    authorize @creative_escape
   end
 
   def update
+    authorize @creative_escape
     @creative_escape = CreativeEscape.find(params[:id])
 
     if @creative_escape.update(creative_escape_params)
@@ -53,7 +56,7 @@ class CreativeEscapesController < ApplicationController
   end
 
   def delete
-
+    authorize @creative_escape
 
   end
 

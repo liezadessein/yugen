@@ -3,10 +3,11 @@ class PaymentsController < ApplicationController
  before_action :authenticate_user!, only:[:new]
 
   def new
+    skip_authorization
   end
 
   def create
-    byebug
+    skip_authorization
     customer = Stripe::Customer.create(
     source: params[:stripeToken],
     email:  params[:stripeEmail]
@@ -22,9 +23,9 @@ class PaymentsController < ApplicationController
   @booking.update(payment: charge.to_json, state: 'paid')
   redirect_to booking_path(@booking)
 
-rescue Stripe::CardError => e
-  flash[:error] = e.message
-  redirect_to new_booking_payment_path(@booking)
+  rescue Stripe::CardError => e
+    flash[:error] = e.message
+    redirect_to new_booking_payment_path(@booking)
   end
 
 private
