@@ -24,6 +24,8 @@ gem 'money-rails'
 gem 'stripe'
 gem 'pg_search'
 gem "pundit"
+gem 'activeadmin', github: 'activeadmin/activeadmin'
+gem 'inherited_resources', github: 'activeadmin/inherited_resources'
 
 gem "coffee-rails"
 gem "gmaps4rails"
